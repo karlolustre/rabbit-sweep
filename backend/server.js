@@ -1,0 +1,29 @@
+const express = require('express');
+const app = express();
+
+//for cross-origin requests
+const cors = require('cors');
+app.use(cors())
+
+//access data in requests
+const bodyParser = require('body-parser');
+
+const mongoose = require('mongoose');
+
+const databaseUrl = process.env.DATABASE_URL || "mongodb+srv://karlolustre:karlolustre@cluster0-6xkfx.mongodb.net/rabbit?retryWrites=true&w=majority";
+mongoose.connect(databaseUrl, {useNewUrlParser: true});
+mongoose.connection.once('open', () => {
+    console.log('Run Rabbit Run');
+})
+
+app.use(bodyParser.json());
+
+//routes
+
+
+
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => {
+    console.log(`Rabbit is in Rabbit Hole ${port}`);
+})
