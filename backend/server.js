@@ -22,6 +22,9 @@ app.use(bodyParser.json());
 const task = require('./routes/task');
 app.use('/task', task)
 
+const index = require('./routes/index');
+app.use('/', index)
+
 
 const port = process.env.PORT || 3000;
 

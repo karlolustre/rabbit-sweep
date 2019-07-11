@@ -22,7 +22,9 @@ const UserSchema = new Schema({
         type: String,
         default: "seeker"
         //roles available: admin, seeker, tasker
-    }
+    },
+} , {
+    timestamps: true, 
 })
 
 module.exports = mongoose.model('user', UserSchema)
