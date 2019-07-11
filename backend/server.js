@@ -19,7 +19,8 @@ mongoose.connection.once('open', () => {
 app.use(bodyParser.json());
 
 //routes
-
+const task = require('./routes/task');
+app.use('/task', task)
 
 
 const port = process.env.PORT || 3000;

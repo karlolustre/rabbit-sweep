@@ -19,7 +19,9 @@ const UserSchema = new Schema({
         default: Date.now
     },
     role: {
-        type: String
+        type: String,
+        default: "seeker"
+        //roles available: admin, seeker, tasker
     }
 })
 
