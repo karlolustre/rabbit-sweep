@@ -17,6 +17,8 @@ passport.use( new LocalStrategy({ usernameField: 'email'}, (email, password, don
     UserModel.findOne({ 'email' : email})
 
     .then((user) => {
+        console.log(user)
+
         if(!user) {
             return done(null, false, { message : "Invalid Credentials"})
         }

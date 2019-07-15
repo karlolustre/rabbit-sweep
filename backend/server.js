@@ -1,5 +1,12 @@
 const express = require('express');
+
 const app = express();
+
+const passport = require('passport')
+
+const jwt = require('jsonwebtoken')
+
+require('./passport')
 
 //for cross-origin requests
 const cors = require('cors');
@@ -20,13 +27,17 @@ app.use(bodyParser.json());
 
 //routes
 const task = require('./routes/task');
-app.use('/task', task)
+app.use('/task', task);
 
 const index = require('./routes/index');
-app.use('/', index)
+app.use('/', index);
 
 const auth = require('./routes/auth');
-app.use('/auth', auth)
+app.use('/auth', auth);
+
+app.use((err, req, res, next) => {
+	res.status(422).send({error : err.message})
+})
 
 
 const port = process.env.PORT || 3000;

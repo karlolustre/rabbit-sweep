@@ -14,10 +14,7 @@ const appPassport = require('../passport')
 
 //login user to system
 router.post('/login', (req, res, next) => {
-    const errors = validationResult(req);
-    if(!errors.isEmpty()) {
-        return res.status(422).json({errors: errors.array()})
-    }
+   
     passport.authenticate('local', {session: false}, (err, user, info) => {
         //request unauthorized if unable to validate
         if(err || !user) {
@@ -43,7 +40,7 @@ router.post('/login', (req, res, next) => {
                 }
             })
         })
-    })
+    })(req, res);
 })
 
 //logout
